@@ -1,8 +1,10 @@
 import { env } from "../.env";
+import store from "../redux/store";
 
 // API call to query pixabay
-const pixabayAPICall = async (q) => {
+const pixabayAPICall = async () => {
   // encode the input query
+  let q = store.getState().inputText;
   q.replace(/ /g, "+");
   return fetch(
     `https://pixabay.com/api/?key=${env.PIXABAY_KEY}&q=${q}&image_type=photo&pretty=true`

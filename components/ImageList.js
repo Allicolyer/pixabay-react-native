@@ -1,6 +1,6 @@
 import React from "react";
 import { theme } from "../utils/theme";
-
+import { connect } from "react-redux";
 import { FlatList, StyleSheet, Image, View, Text } from "react-native";
 
 const ImageList = ({ results }) => {
