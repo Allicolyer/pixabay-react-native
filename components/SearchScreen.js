@@ -6,7 +6,7 @@ import ImageListContainer from "../containers/ImageListContainer";
 import SearchTextInput from "./SearchTextInput";
 import SearchButton from "./SearchButton";
 
-const SearchScreen = () => (
+const SearchScreen = ({ navigation }) => (
   <View style={styles.contentContainer}>
     <Text style={styles.headerText}>Search for images on Pixabay</Text>
     <View style={styles.searchContainer}>
@@ -14,7 +14,7 @@ const SearchScreen = () => (
       <SearchButton />
     </View>
     <View style={styles.resultsContainer}>
-      <ImageListContainer />
+      <ImageListContainer navigation={navigation} />
     </View>
     <StatusBar style="auto" />
   </View>
