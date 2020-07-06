@@ -3,19 +3,12 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { theme } from "../utils/theme";
 import { search } from "../redux/actions";
 import { connect } from "react-redux";
-import store from "../redux/store";
 import pixabayAPICall from "../utils/pixabayAPICall";
-
-const apiCall = async () => {
-  return pixabayAPICall(store.getState().inputText).then((res) => {
-    return res;
-  });
-};
 
 const SearchButton = ({ dispatch }) => (
   <TouchableOpacity
     style={styles.button}
-    onPress={async () => dispatch(search(await apiCall()))}
+    onPress={async () => dispatch(search(await pixabayAPICall()))}
   >
     <Text style={styles.buttonText}>Search</Text>
   </TouchableOpacity>
