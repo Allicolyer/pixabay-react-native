@@ -20,7 +20,7 @@ export const pixabayAPICall = async () => {
 };
 
 //assess the screenOrientation from input dimensions
-export const assessScreenOrientation = (width, height) => {
+export const calculateScreenOrientation = (width, height) => {
   if (height > width) {
     return "portrait";
   } else {

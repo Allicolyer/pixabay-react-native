@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import {
   CHANGE_SEARCH_TEXT_INPUT,
   UPDATE_SEARCH_RESULTS,
-  CHANGE_SCREEN_ORIENTATION,
+  CHANGE_SCREEN_DIMENSIONS,
 } from "./actions";
 
 //keeps track of the search results for the user's search input text
@@ -26,10 +26,21 @@ const searchTextInput = (state = "", action) => {
 };
 
 //changes to the screen orientation are listened for in ./components/Content
-const screenOrientation = (state = "portrait", action) => {
+const screenDimensions = (
+  state = {
+    screenWidth: 100,
+    screenHeight: 100,
+    screenOrientation: "portrait",
+  },
+  action
+) => {
   switch (action.type) {
-    case CHANGE_SCREEN_ORIENTATION:
-      return action.text;
+    case CHANGE_SCREEN_DIMENSIONS:
+      return {
+        screenWidth: action.screenWidth,
+        screenHeight: action.screenHeight,
+        screenOrientation: action.screenOrientation,
+      };
     default:
       return state;
   }
@@ -38,5 +49,5 @@ const screenOrientation = (state = "portrait", action) => {
 export default combineReducers({
   searchResults,
   searchTextInput,
-  screenOrientation,
+  screenDimensions,
 });
