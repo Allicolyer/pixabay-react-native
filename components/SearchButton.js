@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import { search } from "../redux/actions";
 import { connect } from "react-redux";
 import styles from "../utils/appStyles";
-import pixabayAPICall from "../utils/pixabayAPICall";
+import { pixabayAPICall } from "../utils/helpers";
 
 const SearchButton = ({ dispatch }) => (
   <TouchableOpacity
