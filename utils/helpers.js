@@ -2,7 +2,7 @@ import { env } from "../.env";
 import store from "../redux/store";
 
 // API call to pixabay
-const pixabayAPICall = async () => {
+export const pixabayAPICall = async () => {
   // encode the input text
   const q = encodeURIComponent(store.getState().inputText);
   return fetch(
@@ -17,4 +17,10 @@ const pixabayAPICall = async () => {
     });
 };
 
-export default pixabayAPICall;
+export const findScreenOrientation = (width, height) => {
+  if (height > width) {
+    return "portrait";
+  } else {
+    return "landscape";
+  }
+};
