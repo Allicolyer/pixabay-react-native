@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-import { CHANGE_INPUT_TEXT, SEARCH } from "./actions";
+import {
+  CHANGE_INPUT_TEXT,
+  SEARCH,
+  SCREEN_ORIENTATION_CHANGE,
+} from "./actions";
 
 const searchResults = (state = [], action) => {
   switch (action.type) {
@@ -19,7 +23,17 @@ const inputText = (state = "", action) => {
   }
 };
 
+const screenOrientation = (state = "portrait", action) => {
+  switch (action.type) {
+    case SCREEN_ORIENTATION_CHANGE:
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   searchResults,
   inputText,
+  screenOrientation,
 });

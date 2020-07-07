@@ -2,14 +2,16 @@ import React from "react";
 import styles from "../utils/appStyles";
 import { TouchableOpacity, FlatList, Image, View, Text } from "react-native";
 
-const ImageList = ({ navigation, results }) => {
+const ImageList = ({ navigation, results, screenOrientation }) => {
   const parsed = JSON.parse(results);
+
   return (
     <View style={styles.marginVertical}>
       {parsed.length ? (
         <FlatList
+          key={screenOrientation}
           data={parsed}
-          numColumns={3}
+          numColumns={screenOrientation === "portrait" ? 3 : 5}
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => {
