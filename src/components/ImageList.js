@@ -8,7 +8,7 @@ const ImageList = ({ navigation, results, screenOrientation }) => {
   const parsed = JSON.parse(results);
 
   return (
-    <View style={styles.marginVertical}>
+    <View style={[styles.margin, styles.flexOne]}>
       {/* if there are any search results render the Flatlist */}
       {parsed.length ? (
         <FlatList
@@ -26,7 +26,7 @@ const ImageList = ({ navigation, results, screenOrientation }) => {
               }}
             >
               <Image
-                resizeMode="stretch"
+                resizeMode="cover"
                 key={`id${item.id}`}
                 source={{ uri: item.previewURL }}
                 style={[styles.roundedBorder, styles.margin, styles.smallImage]}
