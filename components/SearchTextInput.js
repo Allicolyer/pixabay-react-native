@@ -1,9 +1,11 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { TextInput } from "react-native";
+import styles from "../utils/appStyles";
 import { theme } from "../utils/theme";
 import { connect } from "react-redux";
 import { changeSearchTextInput } from "../redux/actions";
 
+// The SearchTextInput dispatches an action to the redux store whenever the user updates the text input
 const SearchTextInput = ({ dispatch }) => {
   return (
     <TextInput
@@ -13,22 +15,8 @@ const SearchTextInput = ({ dispatch }) => {
       maxLength={100}
       selectionColor={theme.colors.primary}
       clearButtonMode="while-editing"
-      style={[styles.textInput, styles.margin]}
+      style={[styles.searchTextInput, styles.margin, styles.roundedBorder]}
     ></TextInput>
   );
 };
-
-const styles = StyleSheet.create({
-  //textInput can't be styled with flexbox
-  textInput: {
-    width: 200,
-    height: 40,
-    borderColor: theme.colors.primary,
-    borderWidth: 1,
-    borderRadius: theme.radii[0],
-    marginHorizontal: theme.space[1],
-    paddingHorizontal: theme.space[1],
-  },
-});
-
 export default connect()(SearchTextInput);

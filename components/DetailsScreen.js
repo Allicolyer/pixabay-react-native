@@ -2,9 +2,11 @@ import React from "react";
 import styles from "../utils/appStyles";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 
+//The DetailsScreen displays details about a specific image
 const DetailsScreen = ({ route, navigation, screenOrientation }) => {
+  //image is passed in from ./components/ImageList.js
   const { image } = route.params;
-  //the container will either be a row or a column depending on screenOrientation
+  //the container will either be a row or a column depending on the screenOrientation
   const containerStyle =
     screenOrientation === "portrait" ? styles.flexColumn : styles.flexRow;
 
