@@ -13,7 +13,7 @@ const SearchTextInput = ({ dispatch }) => {
       maxLength={100}
       selectionColor={theme.colors.primary}
       clearButtonMode="while-editing"
-      style={styles.textInput}
+      style={[styles.textInput, styles.margin]}
     ></TextInput>
   );
 };
