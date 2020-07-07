@@ -2,12 +2,12 @@ import React from "react";
 import { StyleSheet, TextInput } from "react-native";
 import { theme } from "../utils/theme";
 import { connect } from "react-redux";
-import { changeInputText } from "../redux/actions";
+import { changeSearchTextInput } from "../redux/actions";
 
 const SearchTextInput = ({ dispatch }) => {
   return (
     <TextInput
-      onChangeText={(text) => dispatch(changeInputText(text))}
+      onChangeText={(text) => dispatch(changeSearchTextInput(text))}
       placeholder="Example: Trees"
       // this is the max length for the pixabay API
       maxLength={100}

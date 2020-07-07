@@ -1,26 +1,20 @@
-/*
- * action types
- */
+// action types
+export const CHANGE_SEARCH_TEXT_INPUT = "CHANGE_SEARCH_TEXT_INPUT";
+export const UPDATE_SEARCH_RESULTS = "UPDATE_SEARCH_RESULTS";
+export const CHANGE_SCREEN_ORIENTATION = "CHANGE_SCREEN_ORIENTATION";
 
-export const CHANGE_INPUT_TEXT = "CHANGE_INPUT_TEXT";
-export const SEARCH = "SEARCH";
-export const SCREEN_ORIENTATION_CHANGE = "SCREEN_ORIENTATION_CHANGE";
-
-/*
- * action creators
- */
-
-export const search = (results) => ({
-  type: "SEARCH",
+//action creators
+export const updateSearchResults = (results) => ({
+  type: UPDATE_SEARCH_RESULTS,
   results,
 });
 
-export const changeInputText = (text) => ({
-  type: "CHANGE_INPUT_TEXT",
+export const changeSearchTextInput = (text) => ({
+  type: CHANGE_SEARCH_TEXT_INPUT,
   text,
 });
 
-export const screenOrientationChange = (text) => ({
-  type: "SCREEN_ORIENTATION_CHANGE",
+export const changeScreenOrientation = (text) => ({
+  type: CHANGE_SCREEN_ORIENTATION,
   text,
 });
