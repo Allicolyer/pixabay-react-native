@@ -22,7 +22,7 @@ const ImageList = ({ navigation, results }) => {
               onPress={() => {
                 /* Navigate to the Details route and pass in the image */
                 navigation.navigate("Details", {
-                  id: item.id,
+                  image: item,
                 });
               }}
             >

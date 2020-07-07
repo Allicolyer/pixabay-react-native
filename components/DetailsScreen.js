@@ -1,12 +1,22 @@
 import React from "react";
 import { theme } from "../utils/theme";
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Text, Image } from "react-native";
 
 const DetailsScreen = ({ route, navigation }) => {
-  const { id } = route.params;
+  const { image } = route.params;
   return (
     <View>
-      <Text>You are looking at the details for image {id} </Text>
+      <Image
+        resizeMode="stretch"
+        key={`id${image.id}`}
+        source={{ uri: image.webformatURL }}
+        style={styles.image}
+      />
+      <Text>Uploaded By: {image.user}</Text>
+      <Text>Tags: {image.tags}</Text>
+      <Text>
+        Resolution: {image.imageWidth} x {image.imageHeight}
+      </Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.goBack()}
@@ -28,6 +38,13 @@ const styles = StyleSheet.create({
   buttonText: {
     color: theme.colors.white,
     textAlign: "center",
+  },
+  image: {
+    width: 300,
+    height: 300,
+    marginVertical: theme.space[1],
+    marginHorizontal: theme.space[1],
+    borderRadius: theme.radii[0],
   },
 });
 
