@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { theme } from "../utils/theme";
 import { search } from "../redux/actions";

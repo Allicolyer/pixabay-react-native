@@ -1,9 +1,15 @@
 import React from "react";
 import { theme } from "../utils/theme";
-import { connect } from "react-redux";
-import { FlatList, StyleSheet, Image, View, Text } from "react-native";
+import {
+  TouchableOpacity,
+  FlatList,
+  StyleSheet,
+  Image,
+  View,
+  Text,
+} from "react-native";
 
-const ImageList = ({ results }) => {
+const ImageList = ({ navigation, results }) => {
   const parsed = JSON.parse(results);
   return (
     <View style={styles.listContainer}>
@@ -12,12 +18,21 @@ const ImageList = ({ results }) => {
           data={parsed}
           numColumns={3}
           renderItem={({ item }) => (
-            <Image
-              resizeMode="stretch"
-              key={`id${item.id}`}
-              source={{ uri: item.previewURL }}
-              style={styles.image}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                /* Navigate to the Details route and pass in the image */
+                navigation.navigate("Details", {
+                  image: item,
+                });
+              }}
+            >
+              <Image
+                resizeMode="stretch"
+                key={`id${item.id}`}
+                source={{ uri: item.previewURL }}
+                style={styles.image}
+              />
+            </TouchableOpacity>
           )}
         />
       ) : (
