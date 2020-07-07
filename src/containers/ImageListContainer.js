@@ -5,7 +5,7 @@ import ImageList from "../components/ImageList";
 const mapStateToProps = (state) => {
   return {
     results: JSON.stringify(state.searchResults),
-    screenOrientation: state.screenOrientation,
+    screenOrientation: state.screenDimensions.screenOrientation,
   };
 };
 
