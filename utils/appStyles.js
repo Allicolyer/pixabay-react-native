@@ -70,11 +70,24 @@ const images = {
   },
 };
 
+//text input
+const textInput = {
+  //textInputs can't be styled with flexbox
+  searchTextInput: {
+    width: 200,
+    height: 40,
+    borderColor: theme.colors.primary,
+    borderWidth: 1,
+    paddingHorizontal: theme.space[1],
+  },
+};
+
 const styles = StyleSheet.create({
   ...utilites,
   ...buttons,
   ...text,
   ...images,
+  ...textInput,
 });
 
 export default styles;
