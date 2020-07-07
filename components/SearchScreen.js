@@ -6,6 +6,7 @@ import ImageListContainer from "../containers/ImageListContainer";
 import SearchTextInput from "./SearchTextInput";
 import SearchButton from "./SearchButton";
 
+// The SearchScreen renders the SearchTextInput and SearchButton ImageList components
 const SearchScreen = ({ navigation }) => (
   <View style={[styles.flexColumn, styles.flexOne, styles.margin]}>
     <Text style={[styles.centerText, styles.headerText]}>
