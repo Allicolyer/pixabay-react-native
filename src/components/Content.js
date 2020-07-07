@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import SearchScreen from "./SearchScreen";
+import SearchScreen from "../screens/SearchScreen";
 import DetailsScreenContainer from "../containers/DetailsScreenContainer";
-import { findScreenOrientation } from "../utils/helpers";
-import { screenOrientationChange } from "../redux/actions";
+import { assessScreenOrientation } from "../utils/helpers";
+import { changeScreenOrientation } from "../redux/actions";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions } from "react-native";
 
-//window object to get screen orienation
-const window = Dimensions.get("window");
-//stack object for the navigator
-const Stack = createStackNavigator();
-
+//The Content component renders the main logic of the app and listens for changes in screen orientation
 const Content = ({ dispatch }) => {
-  //change event listener for screen orientation change
+  //window object to get screen orienation
+  const window = Dimensions.get("window");
+  //stack object for the navigator
+  const Stack = createStackNavigator();
+
+  //Change function for screen orientation
   const onChange = ({ window }) => {
     dispatch(
-      screenOrientationChange(
-        findScreenOrientation(window.width, window.height)
+      changeScreenOrientation(
+        assessScreenOrientation(window.width, window.height)
       )
     );
   };
 
-  //add event listener to the component when it loads
+  //Event listener is added when this component
   useEffect(() => {
     Dimensions.addEventListener("change", onChange);
   });
