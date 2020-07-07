@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SearchScreen from "./SearchScreen";
-import DetailsScreen from "./DetailsScreen";
+import DetailsScreenContainer from "../containers/DetailsScreenContainer";
 import { findScreenOrientation } from "../utils/helpers";
 import { screenOrientationChange } from "../redux/actions";
 import { NavigationContainer } from "@react-navigation/native";
@@ -32,7 +32,7 @@ const Content = ({ dispatch }) => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Search">
         <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Details" component={DetailsScreenContainer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
