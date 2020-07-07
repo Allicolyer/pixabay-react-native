@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SearchScreen from "./SearchScreen";
 import DetailsScreenContainer from "../containers/DetailsScreenContainer";
-import { findScreenOrientation } from "../utils/helpers";
-import { screenOrientationChange } from "../redux/actions";
+import { assessScreenOrientation } from "../utils/helpers";
+import { changeScreenOrientation } from "../redux/actions";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions } from "react-native";
@@ -17,8 +17,8 @@ const Content = ({ dispatch }) => {
   //change event listener for screen orientation change
   const onChange = ({ window }) => {
     dispatch(
-      screenOrientationChange(
-        findScreenOrientation(window.width, window.height)
+      changeScreenOrientation(
+        assessScreenOrientation(window.width, window.height)
       )
     );
   };
