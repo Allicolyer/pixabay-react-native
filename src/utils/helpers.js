@@ -1,4 +1,4 @@
-import { env } from "../.env";
+import { env } from "../../.env";
 import store from "../redux/store";
 
 // API call to pixabay
