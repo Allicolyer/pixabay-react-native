@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "./theme";
 
+//styles used throughout app
 const utilites = {
   flexColumn: {
     flexDirection: "column",
@@ -30,6 +31,7 @@ const utilites = {
   },
 };
 
+//button styles
 const buttons = {
   button: {
     width: 100,
@@ -43,6 +45,7 @@ const buttons = {
   },
 };
 
+//text styles
 const text = {
   centerText: { textAlign: "center" },
   headerText: {
@@ -55,6 +58,7 @@ const text = {
   },
 };
 
+//image styles
 const images = {
   smallImage: {
     width: 100,

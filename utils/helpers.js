@@ -3,13 +3,15 @@ import store from "../redux/store";
 
 // API call to pixabay
 export const pixabayAPICall = async () => {
-  // encode the input text
+  // encode the input text from the redux store
   const q = encodeURIComponent(store.getState().inputText);
+  //fetch the URL with the encoded query
   return fetch(
     `https://pixabay.com/api/?key=${env.PIXABAY_KEY}&q=${q}&image_type=photo&pretty=true`
   )
     .then((response) => response.json())
     .then((json) => {
+      //return the hits for the search query
       return json.hits;
     })
     .catch((error) => {
@@ -17,6 +19,7 @@ export const pixabayAPICall = async () => {
     });
 };
 
+//assess the screenOrientation from input dimensions
 export const findScreenOrientation = (width, height) => {
   if (height > width) {
     return "portrait";
