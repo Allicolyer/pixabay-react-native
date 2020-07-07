@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { updateSearchResults } from "../redux/actions";
 import { connect } from "react-redux";
-import styles from "../utils/appStyles";
+import styles from "../style/appStyles";
 import { pixabayAPICall } from "../utils/helpers";
 
 // The SearchButton calls the pixabayAPI and dispatches the updateSearchResults action to the redux stores

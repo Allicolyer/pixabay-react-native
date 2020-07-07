@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../utils/appStyles";
+import styles from "../style/appStyles";
 import { TouchableOpacity, FlatList, Image, View, Text } from "react-native";
 
 // The ImageList Component displays all images from a user's search

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import SearchScreen from "./SearchScreen";
+import SearchScreen from "../screens/SearchScreen";
 import DetailsScreenContainer from "../containers/DetailsScreenContainer";
 import { assessScreenOrientation } from "../utils/helpers";
 import { changeScreenOrientation } from "../redux/actions";

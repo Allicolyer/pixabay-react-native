@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../utils/appStyles";
+import styles from "../style/appStyles";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 
 //The DetailsScreen displays details about a specific image

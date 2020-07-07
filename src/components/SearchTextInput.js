@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native";
-import styles from "../utils/appStyles";
-import { theme } from "../utils/theme";
+import styles from "../style/appStyles";
+import { theme } from "../style/theme";
 import { connect } from "react-redux";
 import { changeSearchTextInput } from "../redux/actions";
 
