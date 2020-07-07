@@ -1,11 +1,12 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text } from "react-native";
-import styles from "../utils/appStyles";
+import styles from "../style/appStyles";
 import ImageListContainer from "../containers/ImageListContainer";
-import SearchTextInput from "./SearchTextInput";
-import SearchButton from "./SearchButton";
+import SearchTextInput from "../components/SearchTextInput";
+import SearchButton from "../components/SearchButton";
 
+// The SearchScreen renders the SearchTextInput and SearchButton ImageList components
 const SearchScreen = ({ navigation }) => (
   <View style={[styles.flexColumn, styles.flexOne, styles.margin]}>
     <Text style={[styles.centerText, styles.headerText]}>
