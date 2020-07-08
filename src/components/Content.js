@@ -7,6 +7,7 @@ import { changeScreenDimensions } from "../redux/actions";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions } from "react-native";
+import { theme } from "../style/theme";
 
 //The Content component renders the main logic of the app and listens for changes in screen orientation
 const Content = ({ dispatch }) => {
@@ -33,7 +34,19 @@ const Content = ({ dispatch }) => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Search">
+      <Stack.Navigator
+        initialRouteName="Search"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
+          headerTintColor: theme.colors.white,
+          headerTitleStyle: {
+            fontWeight: theme.fontWeights[2],
+            fontStyle: theme.fontStyle,
+          },
+        }}
+      >
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Details" component={DetailsScreenContainer} />
       </Stack.Navigator>

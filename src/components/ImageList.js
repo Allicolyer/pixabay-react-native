@@ -12,7 +12,7 @@ const ImageList = ({ navigation, results, screenWidth }) => {
   const numofColumns = calculateImageListColumns(screenWidth, 16);
 
   return (
-    <View style={[styles.flexOne]}>
+    <View style={[styles.flexOne, styles.margin]}>
       {/* if there are any search results render the Flatlist */}
       {parsed.length ? (
         <FlatList
@@ -41,12 +41,10 @@ const ImageList = ({ navigation, results, screenWidth }) => {
         />
       ) : (
         //If there are no search results
-        <View>
-          <Text style={[styles.centerText, styles.primaryText]}>
-            {/* If there are no results is null, tell user to enter text to get started, otherwise there are no results */}
-            {results ? "No results found" : "Enter text to get started"}
-          </Text>
-        </View>
+        <Text style={styles.infoText}>
+          {/* If there are no results is null, tell user to enter text to get started, otherwise there are no results */}
+          {results ? "No results found" : "Enter text to get started"}
+        </Text>
       )}
     </View>
   );
