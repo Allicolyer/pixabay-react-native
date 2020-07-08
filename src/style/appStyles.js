@@ -61,9 +61,10 @@ const text = {
 
 //image styles
 const images = {
-  smallImage: {
+  imageThumbnail: {
     width: 100,
     height: 100,
+    margin: theme.space[1],
   },
 };
 
