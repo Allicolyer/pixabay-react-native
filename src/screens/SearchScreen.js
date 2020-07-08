@@ -16,9 +16,7 @@ const SearchScreen = ({ navigation }) => (
       <SearchTextInput />
       <SearchButton />
     </View>
-    <View style={[styles.flexRow, styles.marginHorizontal]}>
-      <ImageListContainer navigation={navigation} />
-    </View>
+    <ImageListContainer navigation={navigation} />
     <StatusBar style="auto" />
   </View>
 );

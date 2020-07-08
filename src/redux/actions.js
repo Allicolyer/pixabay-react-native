@@ -1,7 +1,7 @@
 // action types
 export const CHANGE_SEARCH_TEXT_INPUT = "CHANGE_SEARCH_TEXT_INPUT";
 export const UPDATE_SEARCH_RESULTS = "UPDATE_SEARCH_RESULTS";
-export const CHANGE_SCREEN_ORIENTATION = "CHANGE_SCREEN_ORIENTATION";
+export const CHANGE_SCREEN_DIMENSIONS = "CHANGE_SCREEN_DIMENSIONS";
 
 //action creators
 export const updateSearchResults = (results) => ({
@@ -14,7 +14,13 @@ export const changeSearchTextInput = (text) => ({
   text,
 });
 
-export const changeScreenOrientation = (text) => ({
-  type: CHANGE_SCREEN_ORIENTATION,
-  text,
+export const changeScreenDimensions = (
+  screenWidth,
+  screenHeight,
+  screenOrientation
+) => ({
+  type: CHANGE_SCREEN_DIMENSIONS,
+  screenWidth,
+  screenHeight,
+  screenOrientation,
 });
