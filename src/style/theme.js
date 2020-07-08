@@ -1,7 +1,6 @@
 const colors = {
-  primary: "#191B26",
-  primaryTint: "#474951",
-  primaryShade: "#14161e",
+  primary: "#56A948",
+  secondary: "#191B26",
   white: "#fff",
 };
 
@@ -22,7 +21,7 @@ const sizes = {
   ],
   // Font
   fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
-  fontWeights: [300, 400, 600, 700],
+  fontWeights: ["300", "400", "700"],
   fontStack: "sans-serif-thin, sans-serif-light, sans-serif",
 };
 
