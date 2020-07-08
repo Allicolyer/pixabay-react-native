@@ -42,20 +42,16 @@ const DetailsScreen = ({ route, navigation, screenDimensions }) => {
         />
       </View>
       <View style={[textContainerStyle, styles.flexColumn, styles.margin]}>
-        <Text style={[styles.primaryText, styles.centerText]}>
-          Uploaded By: {image.user}
-        </Text>
-        <Text style={[styles.primaryText, styles.centerText]}>
-          Tags: {image.tags}
-        </Text>
-        <Text style={[styles.primaryText, styles.centerText]}>
+        <Text style={styles.infoText}>Uploaded By: {image.user}</Text>
+        <Text style={styles.infoText}>Tags: {image.tags}</Text>
+        <Text style={styles.infoText}>
           Resolution: {image.imageWidth} x {image.imageHeight}
         </Text>
         <TouchableOpacity
           style={[styles.marginVertical, styles.button]}
           onPress={() => navigation.goBack()}
         >
-          <Text style={styles.buttonText}>Go Back</Text>
+          <Text style={styles.buttonText}>Back</Text>
         </TouchableOpacity>
       </View>
     </View>
