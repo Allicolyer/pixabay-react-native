@@ -8,7 +8,7 @@ import { Dimensions } from "react-native";
 import { calculateScreenOrientation } from "../utils/helpers";
 
 //keeps track of the search results for the user's search input text
-const searchResults = (state = [], action) => {
+const searchResults = (state = null, action) => {
   switch (action.type) {
     case UPDATE_SEARCH_RESULTS:
       return action.results;
