@@ -9,9 +9,7 @@ import SearchButton from "../components/SearchButton";
 // The SearchScreen renders the SearchTextInput and SearchButton ImageList components
 const SearchScreen = ({ navigation }) => (
   <View style={[styles.flexColumn, styles.flexOne, styles.margin]}>
-    <Text style={[styles.centerText, styles.headerText]}>
-      Search for images on Pixabay
-    </Text>
+    <Text style={styles.headerText}>Search for Images on Pixabay</Text>
     <View style={[styles.marginHorizontal, styles.flexRow]}>
       <SearchTextInput />
       <SearchButton />

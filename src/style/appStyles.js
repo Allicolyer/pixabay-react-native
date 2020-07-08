@@ -41,6 +41,7 @@ const buttons = {
     borderRadius: theme.radii[0],
   },
   buttonText: {
+    fontWeight: theme.fontWeights[2],
     color: theme.colors.white,
     textAlign: "center",
   },
@@ -48,14 +49,12 @@ const buttons = {
 
 //text styles
 const text = {
-  centerText: { textAlign: "center" },
+  infoText: { color: theme.colors.secondary, textAlign: "center" },
   headerText: {
+    textAlign: "center",
+    color: theme.colors.secondary,
     marginVertical: theme.space[2],
-    color: theme.colors.primary,
     fontSize: theme.fontSizes[3],
-  },
-  primaryText: {
-    color: theme.colors.primary,
   },
 };
 
@@ -74,7 +73,7 @@ const textInput = {
   searchTextInput: {
     width: 200,
     height: 40,
-    borderColor: theme.colors.primary,
+    borderColor: theme.colors.secondary,
     borderWidth: 1,
     paddingHorizontal: theme.space[1],
   },
