@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../style/appStyles";
+import store from "../redux/store";
 import { calculateImageListColumns } from "../utils/helpers";
 import { TouchableOpacity, FlatList, Image, View, Text } from "react-native";
 
 // The ImageList Component displays all images from a user's search
 const ImageList = ({ navigation, results, screenOrientation }) => {
-  //results need to be parsed before they can be rendered in the FlatList component
-  const parsed = JSON.parse(results);
+  //if there are results, parse them before they can be rendered in the FlatList component, otherwise set parsed to an empty array
+  const parsed = results ? JSON.parse(results) : [];
   //calculate the number of columns
   const numofColumns = calculateImageListColumns(16);
 
@@ -40,9 +41,12 @@ const ImageList = ({ navigation, results, screenOrientation }) => {
         />
       ) : (
         //If there are no search results
-        <Text style={[styles.centerText, styles.primaryText]}>
-          No results found
-        </Text>
+        <View>
+          <Text style={[styles.centerText, styles.primaryText]}>
+            {/* If there are no results is null, tell user to enter text to get started, otherwise there are no results */}
+            {results ? "No results found" : "Enter text to get started"}
+          </Text>
+        </View>
       )}
     </View>
   );

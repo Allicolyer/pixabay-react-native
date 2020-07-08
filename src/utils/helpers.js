@@ -5,19 +5,21 @@ import styles from "../style/appStyles";
 // API call to pixabay
 export const pixabayAPICall = async () => {
   // encode the input text from the redux store
-  const q = encodeURIComponent(store.getState().searchTextInput);
-  //fetch the URL with the encoded query
-  return fetch(
-    `https://pixabay.com/api/?key=${env.PIXABAY_KEY}&q=${q}&image_type=photo&pretty=true`
-  )
-    .then((response) => response.json())
-    .then((json) => {
-      //return the hits for the search query
-      return json.hits;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  if (store.getState().searchTextInput.length) {
+    const q = encodeURIComponent(store.getState().searchTextInput);
+    //fetch the URL with the encoded query
+    return fetch(
+      `https://pixabay.com/api/?key=${env.PIXABAY_KEY}&q=${q}&image_type=photo&pretty=true`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        //return the hits for the search query
+        return json.hits;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else return null;
 };
 
 //assess the screenOrientation from input dimensions
