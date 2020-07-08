@@ -4,13 +4,13 @@ import { calculateImageDisplayDimensions } from "../utils/helpers";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 
 //The DetailsScreen displays details about a specific image
-const DetailsScreen = ({ route, navigation, screenOrientation }) => {
+const DetailsScreen = ({ route, navigation, screenDimensions }) => {
   //image is passed in from ./components/ImageList.js
   const { image } = route.params;
 
   //the containers will either be a row or a column depending on the screenOrientation
   let containerStyle, textContainerStyle;
-  if (screenOrientation === "portrait") {
+  if (screenDimensions.screenOrientation === "portrait") {
     containerStyle = styles.flexColumn;
   } else {
     containerStyle = styles.flexRow;
@@ -19,6 +19,7 @@ const DetailsScreen = ({ route, navigation, screenOrientation }) => {
 
   //calcuate display image width and height
   let imageDimensions = calculateImageDisplayDimensions(
+    screenDimensions,
     image.webformatWidth,
     image.webformatHeight
   );

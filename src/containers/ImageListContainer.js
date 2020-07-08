@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
     results: state.searchResults
       ? JSON.stringify(state.searchResults)
       : state.searchResults,
-    screenOrientation: state.screenDimensions.screenOrientation,
+    screenWidth: state.screenDimensions.screenWidth,
   };
 };
 

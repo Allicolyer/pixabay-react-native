@@ -5,19 +5,19 @@ import { calculateImageListColumns } from "../utils/helpers";
 import { TouchableOpacity, FlatList, Image, View, Text } from "react-native";
 
 // The ImageList Component displays all images from a user's search
-const ImageList = ({ navigation, results, screenOrientation }) => {
+const ImageList = ({ navigation, results, screenWidth }) => {
   //if there are results, parse them before they can be rendered in the FlatList component, otherwise set parsed to an empty array
   const parsed = results ? JSON.parse(results) : [];
   //calculate the number of columns
-  const numofColumns = calculateImageListColumns(16);
+  const numofColumns = calculateImageListColumns(screenWidth, 16);
 
   return (
     <View style={[styles.flexOne]}>
       {/* if there are any search results render the Flatlist */}
       {parsed.length ? (
         <FlatList
-          //this rerenders the flatList every time there is a change in the screen orientation
-          key={screenOrientation}
+          //this rerenders the flatList every time there is a change in the screen width
+          key={`id${screenWidth}`}
           data={parsed}
           // the number of columns changes based on the screen orientation
           numColumns={numofColumns}
