@@ -7,6 +7,7 @@ const utilites = {
     flexDirection: "column",
     alignSelf: "stretch",
     alignItems: "center",
+    justifyContent: "center",
   },
   flexRow: {
     flexDirection: "row",
@@ -60,13 +61,10 @@ const text = {
 
 //image styles
 const images = {
-  smallImage: {
+  imageThumbnail: {
     width: 100,
     height: 100,
-  },
-  largeImage: {
-    width: 300,
-    height: 300,
+    margin: theme.space[1],
   },
 };
 
