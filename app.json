@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "\\",
-    "slug": "101-challenge",
+    "name": "React Native 101 Challenge",
+    "description": "This app allows users to search for and view details about images on Pixabay. View the source code on Github: https://github.com/Allicolyer/pixabay-react-native",
+    "slug": "react-native-101-challenge",
     "version": "1.0.0",
-    "icon": "./src/assets/icon.png",
+    "icon": "./src/assets/101.png",
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
