@@ -1,5 +1,6 @@
 import { env } from "../../.env";
 import store from "../redux/store";
+import styles from "../style/appStyles";
 
 // API call to pixabay
 export const pixabayAPICall = async () => {
@@ -62,4 +63,15 @@ export const calculateImageDisplayDimensions = (inputWidth, inputHeight) => {
   }
 
   return { width: imageWidth, height: imageHeight };
+};
+
+//calculate the number of columns that should be shown in the image list
+export const calculateImageListColumns = (marginInPixels) => {
+  //calcuate imageWidth using stylesheet
+  imageWidth = styles.imageThumbnail.width + styles.imageThumbnail.margin;
+  //get the width of the screen from the redux store, subtrack the width of the side margin
+  const availableWidth =
+    store.getState().screenDimensions.screenWidth - 2 * marginInPixels;
+  //return how many columns can fit
+  return Math.floor(availableWidth / imageWidth);
 };
