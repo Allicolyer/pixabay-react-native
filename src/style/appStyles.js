@@ -7,6 +7,7 @@ const utilites = {
     flexDirection: "column",
     alignSelf: "stretch",
     alignItems: "center",
+    justifyContent: "center",
   },
   flexRow: {
     flexDirection: "row",
@@ -63,10 +64,6 @@ const images = {
   smallImage: {
     width: 100,
     height: 100,
-  },
-  largeImage: {
-    width: 300,
-    height: 300,
   },
 };
 
