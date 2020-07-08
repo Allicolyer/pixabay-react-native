@@ -4,7 +4,7 @@ import DetailsScreen from "../screens/DetailsScreen";
 //maps the screen orientation from the redux store to the DetailsScreen props
 const mapStateToProps = (state) => {
   return {
-    screenOrientation: state.screenOrientation,
+    screenDimensions: state.screenDimensions,
   };
 };
 
