@@ -19,6 +19,7 @@ const ImageList = ({ navigation, results, screenWidth }) => {
           //this rerenders the flatList every time there is a change in the screen width
           key={`id${screenWidth}`}
           data={parsed}
+          showsVerticalScrollIndicator={false}
           // the number of columns changes based on the screen orientation
           numColumns={numofColumns}
           renderItem={({ item }) => (
