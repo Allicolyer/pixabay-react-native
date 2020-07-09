@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import styles from "../style/appStyles";
 import { paginatedPixabayAPICall } from "../utils/helpers";
 import store from "../redux/store";
+import PropTypes from "prop-types";
 
 // The SearchButton calls the pixabayAPI and dispatches the updateSearchResults action to the redux stores
 const SearchButton = ({ dispatch }) => (
@@ -29,5 +30,9 @@ const SearchButton = ({ dispatch }) => (
     <Text style={styles.buttonText}>Search</Text>
   </TouchableOpacity>
 );
+
+SearchButton.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(SearchButton);
