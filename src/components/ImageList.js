@@ -3,11 +3,17 @@ import { connect } from "react-redux";
 import styles from "../style/appStyles";
 import { calculateImageListColumns } from "../utils/helpers";
 import store from "../redux/store";
-import { TouchableOpacity, FlatList, Image } from "react-native";
+import { TouchableOpacity, FlatList, Image, Text } from "react-native";
 import { updatePositionInImageList } from "../redux/actions";
 
 // The ImageList Component displays all images from a user's search
-const ImageList = ({ dispatch, navigation, parsed, screenWidth }) => {
+const ImageList = ({
+  dispatch,
+  navigation,
+  results,
+  totalHits,
+  screenWidth,
+}) => {
   //figure out where the last position in the list was
   const indexInImageList = store.getState().indexInImageList;
   //calculate the number of columns that should be in the flatList
@@ -17,6 +23,8 @@ const ImageList = ({ dispatch, navigation, parsed, screenWidth }) => {
     styles.imageThumbnail.height + 2 * styles.imageThumbnail.margin;
   //add a ref to the flatlist
   const flatListRef = useRef(null);
+  //parse the results
+  const parsed = JSON.parse(results);
 
   //scroll to the last visible item whenever the list reloads
   useEffect(() => {
@@ -46,6 +54,9 @@ const ImageList = ({ dispatch, navigation, parsed, screenWidth }) => {
   return (
     <FlatList
       ref={flatListRef}
+      //header and footer
+      ListHeaderComponent={ListHeader(totalHits)}
+      ListFooterComponent={ListFooter}
       //this rerenders the list every time there is a change in the screen width
       key={`id${screenWidth}`}
       onScroll={(e) => onScroll(e)}
@@ -75,5 +86,11 @@ const ImageList = ({ dispatch, navigation, parsed, screenWidth }) => {
     />
   );
 };
+
+//this could be refactored to use the totalHits property from the API call
+const ListHeader = (totalHits) => (
+  <Text style={styles.infoText}>Number of Results: {totalHits}</Text>
+);
+const ListFooter = () => <Text style={styles.infoText}>End of Results</Text>;
 
 export default connect()(ImageList);
