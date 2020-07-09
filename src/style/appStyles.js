@@ -36,9 +36,13 @@ const utilites = {
 const buttons = {
   button: {
     width: 100,
+    height: 40,
+    paddingHorizontal: 20,
     backgroundColor: theme.colors.primary,
-    padding: theme.space[2],
     borderRadius: theme.radii[0],
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonText: {
     fontWeight: theme.fontWeights[2],
@@ -61,8 +65,8 @@ const text = {
 //image styles
 const images = {
   imageThumbnail: {
-    width: 100,
-    height: 100,
+    width: 85,
+    height: 85,
     margin: theme.space[1],
   },
 };
