@@ -3,23 +3,45 @@ import styles from "../style/appStyles";
 import { Dimensions } from "react-native";
 
 // API call to pixabay
-export const pixabayAPICall = async (text) => {
-  // encode the input text from the redux store
+export const paginatedPixabayAPICall = async (text) => {
   if (text.length) {
+    // encode the input text from the redux store
     const q = encodeURIComponent(text);
+    let num = 1;
+    let alreadyViewed = 200;
+    let hits = [];
+    //call the API until all images have been added to the hits array
+    try {
+      let json = await pixabayAPICall(q, num);
+      hits.push(...json.hits);
+      let totalHits = json.totalHits;
+
+      //keep iterating until all pages have been visited
+      while (totalHits >= alreadyViewed) {
+        num += 1;
+        alreadyViewed += 200;
+        json = await pixabayAPICall(q, num);
+        hits.push(...json.hits);
+      }
+      return hits;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  //if there is no input text return null
+  else return null;
+};
+
+export const pixabayAPICall = async (encodedText, num) => {
+  try {
     //fetch the URL with the encoded query
-    return fetch(
-      `https://pixabay.com/api/?key=${env.PIXABAY_KEY}&q=${q}&image_type=photo&pretty=true`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        //return the hits for the search query
-        return json.hits;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  } else return null;
+    let response = await fetch(
+      `https://pixabay.com/api/?key=${env.PIXABAY_KEY}&q=${encodedText}&image_type=photo&pretty=true&per_page=200&page=${num}`
+    );
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 //assess the screenOrientation from input dimensions
