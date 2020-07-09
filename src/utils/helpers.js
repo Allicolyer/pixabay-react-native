@@ -23,13 +23,13 @@ export const paginatedPixabayAPICall = async (text) => {
         json = await pixabayAPICall(q, num);
         hits.push(...json.hits);
       }
-      return hits;
+      return { hits: hits, totalHits: totalHits };
     } catch (error) {
       console.log(error);
     }
   }
-  //if there is no input text return null
-  else return null;
+  //if there is no input text return null for both fields
+  else return { hits: null, totalHits: null };
 };
 
 export const pixabayAPICall = async (encodedText, num) => {
