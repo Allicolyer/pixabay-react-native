@@ -22,6 +22,8 @@ const ImageList = ({
   //calculate row height from stylesheet
   const rowHeight =
     styles.imageThumbnail.height + 2 * styles.imageThumbnail.margin;
+  //header height is used to calculate the offset
+  const headerHeight = 20;
   //add a ref to the flatlist
   const flatListRef = useRef(null);
   //parse the results
@@ -30,7 +32,17 @@ const ImageList = ({
   //scroll to the last visible item whenever the list reloads
   useEffect(() => {
     if (flatListRef.current) {
-      let offset = Math.floor(indexInImageList / numofColumns) * rowHeight;
+      //scroll to the top of the list if the index is 0
+      let offset;
+      if (indexInImageList == 0) {
+        offset = 0;
+      }
+      //otherwise figure out the offset
+      else {
+        offset =
+          Math.floor(indexInImageList / numofColumns) * rowHeight +
+          headerHeight;
+      }
       flatListRef.current.scrollToOffset({
         animated: true,
         offset: offset,
@@ -40,9 +52,14 @@ const ImageList = ({
 
   const onScroll = (e) => {
     let offset = e.nativeEvent.contentOffset.y;
-    let rowIndex = parseInt(offset / rowHeight);
-    //this finds the index of the image on the first row on the screen -- this will be used to calcuate how much to offset a re-rendered grid by
-    let imageIndex = rowIndex * numofColumns;
+    let rowIndex, imageIndex;
+    //only start counting rows once you've scrolled passed the header
+    if (offset > headerHeight) {
+      offset = offset - headerHeight;
+      rowIndex = Math.round(offset / rowHeight);
+      //this finds the index of the image on the first row on the screen -- this will be used to calcuate how much to offset a re-rendered grid by
+      imageIndex = rowIndex * numofColumns;
+    } else rowIndex = imageIndex = 0;
     dispatch(updatePositionInImageList(imageIndex));
   };
 
@@ -56,7 +73,7 @@ const ImageList = ({
     <FlatList
       ref={flatListRef}
       //header and footer
-      ListHeaderComponent={ListHeader(totalHits)}
+      ListHeaderComponent={ListHeader(headerHeight, totalHits)}
       ListFooterComponent={ListFooter}
       //this rerenders the list every time there is a change in the screen width
       key={`id${screenWidth}`}
@@ -89,8 +106,10 @@ const ImageList = ({
 };
 
 //this could be refactored to use the totalHits property from the API call
-const ListHeader = (totalHits) => (
-  <Text style={styles.infoText}>Number of Results: {totalHits}</Text>
+const ListHeader = (headerHeight, totalHits) => (
+  <Text style={[styles.infoText, { height: headerHeight }]}>
+    Number of Results: {totalHits}
+  </Text>
 );
 const ListFooter = () => <Text style={styles.infoText}>End of Results</Text>;
 
