@@ -26,6 +26,10 @@ const ImageList = ({
     screenOrientation,
     8
   );
+  //for larger screens, like tablets, if the thumbnails are too big, use the webformatURL
+  const thumbnailURL =
+    imageWidthandHeight <= 150 ? "previewURL" : "webformatURL";
+
   const rowHeight = imageWidthandHeight + 2 * styles.imageThumbnail.margin;
   //header height is used to calculate the offset
   const headerHeight = 20;
@@ -100,7 +104,7 @@ const ImageList = ({
         >
           <Image
             resizeMode="cover"
-            source={{ uri: item.previewURL }}
+            source={{ uri: item[thumbnailURL] }}
             style={[
               styles.roundedBorder,
               styles.imageThumbnail,
