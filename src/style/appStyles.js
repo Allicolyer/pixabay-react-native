@@ -53,7 +53,11 @@ const buttons = {
 
 //text styles
 const text = {
-  infoText: { color: theme.colors.secondary, textAlign: "center" },
+  infoText: {
+    fontSize: theme.fontSizes[1],
+    color: theme.colors.secondary,
+    textAlign: "center",
+  },
   headerText: {
     textAlign: "center",
     color: theme.colors.secondary,
