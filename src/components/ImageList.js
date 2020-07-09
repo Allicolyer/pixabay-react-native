@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import styles from "../style/appStyles";
-import { calculateImageListColumns } from "../utils/helpers";
+import { calculateImageThumbnailWidthandHeight } from "../utils/helpers";
 import store from "../redux/store";
 import { TouchableOpacity, FlatList, Image, Text } from "react-native";
 import { updatePositionInImageList } from "../redux/actions";
@@ -14,14 +14,23 @@ const ImageList = ({
   results,
   totalHits,
   screenWidth,
+  screenOrientation,
 }) => {
   //figure out where the last position in the list was
   const indexInImageList = store.getState().indexInImageList;
   //calculate the number of columns that should be in the flatList
-  const numofColumns = calculateImageListColumns(screenWidth, 16);
-  //calculate row height from stylesheet
-  const rowHeight =
-    styles.imageThumbnail.height + 2 * styles.imageThumbnail.margin;
+  const numofColumns = screenOrientation == "portrait" ? 4 : 8;
+  //calculate the image height and width
+  const imageWidthandHeight = calculateImageThumbnailWidthandHeight(
+    screenWidth,
+    screenOrientation,
+    8
+  );
+  //for larger screens, like tablets, if the thumbnails are too big, use the webformatURL
+  const thumbnailURL =
+    imageWidthandHeight <= 150 ? "previewURL" : "webformatURL";
+
+  const rowHeight = imageWidthandHeight + 2 * styles.imageThumbnail.margin;
   //header height is used to calculate the offset
   const headerHeight = 20;
   //add a ref to the flatlist
@@ -44,7 +53,7 @@ const ImageList = ({
           headerHeight;
       }
       flatListRef.current.scrollToOffset({
-        animated: true,
+        animated: false,
         offset: offset,
       });
     }
@@ -76,7 +85,7 @@ const ImageList = ({
       ListHeaderComponent={ListHeader(headerHeight, totalHits)}
       ListFooterComponent={ListFooter}
       //this rerenders the list every time there is a change in the screen width
-      key={`id${screenWidth}`}
+      key={screenOrientation}
       onScroll={(e) => onScroll(e)}
       getItemLayout={getItemLayout}
       data={parsed}
@@ -96,8 +105,12 @@ const ImageList = ({
         >
           <Image
             resizeMode="cover"
-            source={{ uri: item.previewURL }}
-            style={[styles.roundedBorder, styles.imageThumbnail]}
+            source={{ uri: item[thumbnailURL] }}
+            style={[
+              styles.roundedBorder,
+              styles.imageThumbnail,
+              { height: imageWidthandHeight, width: imageWidthandHeight },
+            ]}
           />
         </TouchableOpacity>
       )}
@@ -119,6 +132,7 @@ ImageList.propTypes = {
   results: PropTypes.string.isRequired,
   totalHits: PropTypes.number.isRequired,
   screenWidth: PropTypes.number.isRequired,
+  screenOrientation: PropTypes.string.isRequired,
 };
 
 export default connect()(ImageList);

@@ -1,6 +1,6 @@
 import {
   calculateScreenOrientation,
-  calculateImageListColumns,
+  calculateImageThumbnailWidthandHeight,
   calculateImageDisplayDimensions,
 } from "../src/utils/helpers";
 
@@ -37,25 +37,31 @@ test("screen oriention helper function should return landscape", () => {
   ).toBe(screenSizes.landscapeScreen.screenOrientation);
 });
 
-//image list layout columns tests
-test("image list column helper should return 4 columns", () => {
-  const marginInPixels = 16;
-  expect(
-    calculateImageListColumns(
-      screenSizes.portraitScreen.screenWidth,
-      marginInPixels
-    )
-  ).toBe(4);
+//test for image thumbnail sizes in image grid
+test("Image thumbnail size test on portrait screen", () => {
+  const screenWidth = screenSizes.portraitScreen.screenWidth;
+  const screenOrientation = screenSizes.portraitScreen.screenOrientation;
+  const marginInPixels = 8;
+
+  let imageHeightandWidth = calculateImageThumbnailWidthandHeight(
+    screenWidth,
+    screenOrientation,
+    marginInPixels
+  );
+  expect(imageHeightandWidth).toBe(88);
 });
 
-test("image list column helper should return 8 columns", () => {
-  const marginInPixels = 16;
-  expect(
-    calculateImageListColumns(
-      screenSizes.landscapeScreen.screenWidth,
-      marginInPixels
-    )
-  ).toBe(8);
+test("Image thumbnail size test on landscape screen", () => {
+  const screenWidth = screenSizes.landscapeScreen.screenWidth;
+  const screenOrientation = screenSizes.landscapeScreen.screenOrientation;
+  const marginInPixels = 8;
+
+  let imageHeightandWidth = calculateImageThumbnailWidthandHeight(
+    screenWidth,
+    screenOrientation,
+    marginInPixels
+  );
+  expect(imageHeightandWidth).toBe(90);
 });
 
 //image resizing tests

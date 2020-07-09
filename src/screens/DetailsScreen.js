@@ -25,13 +25,20 @@ const DetailsScreen = ({ route, navigation, screenDimensions }) => {
     image.webformatHeight
   );
 
+  //for larger screens, like tablets, if the image is larger than the webformatURL, use the largeImageURL.
+  const displayURL =
+    imageDimensions.width <= image.webformatWidth &&
+    imageDimensions.height <= image.webformatHeight
+      ? "webformatURL"
+      : "largeImageURL";
+
   return (
     <View style={[containerStyle, styles.flexOne, styles.margin]}>
       <View style={styles.flexColumn}>
         <Image
           resizeMode="cover"
           key={`id${image.id}`}
-          source={{ uri: image.webformatURL }}
+          source={{ uri: image[displayURL] }}
           style={[
             styles.roundedBorder,
             styles.margin,
@@ -62,7 +69,7 @@ const DetailsScreen = ({ route, navigation, screenDimensions }) => {
 DetailsScreen.propTypes = {
   route: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
-  screenDimension: PropTypes.shape({
+  screenDimensions: PropTypes.shape({
     screenWidth: PropTypes.number.isRequired,
     screenHeight: PropTypes.number.isRequired,
     screenOrientation: PropTypes.string.isRequired,
