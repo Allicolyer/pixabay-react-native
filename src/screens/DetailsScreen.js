@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../style/appStyles";
 import { calculateImageDisplayDimensions } from "../utils/helpers";
 import { TouchableOpacity, View, Text, Image } from "react-native";
+import PropTypes from "prop-types";
 
 //The DetailsScreen displays details about a specific image
 const DetailsScreen = ({ route, navigation, screenDimensions }) => {
@@ -56,6 +57,16 @@ const DetailsScreen = ({ route, navigation, screenDimensions }) => {
       </View>
     </View>
   );
+};
+
+DetailsScreen.propTypes = {
+  route: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+  screenDimension: PropTypes.shape({
+    screenWidth: PropTypes.number.isRequired,
+    screenHeight: PropTypes.number.isRequired,
+    screenOrientation: PropTypes.string.isRequired,
+  }),
 };
 
 export default DetailsScreen;

@@ -4,6 +4,7 @@ import styles from "../style/appStyles";
 import { theme } from "../style/theme";
 import { connect } from "react-redux";
 import { changeSearchTextInput } from "../redux/actions";
+import PropTypes from "prop-types";
 
 // The SearchTextInput dispatches an action to the redux store whenever the user updates the text input
 const SearchTextInput = ({ dispatch }) => {
@@ -19,4 +20,9 @@ const SearchTextInput = ({ dispatch }) => {
     ></TextInput>
   );
 };
+
+SearchTextInput.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
 export default connect()(SearchTextInput);

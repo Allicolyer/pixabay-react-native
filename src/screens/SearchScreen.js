@@ -5,6 +5,7 @@ import styles from "../style/appStyles";
 import SearchResultsContainer from "../containers/SearchResultsContainer";
 import SearchTextInput from "../components/SearchTextInput";
 import SearchButton from "../components/SearchButton";
+import PropTypes from "prop-types";
 
 // The SearchScreen renders the SearchTextInput, SearchButton, and SearchResults components
 const SearchScreen = ({ navigation }) => (
@@ -18,5 +19,9 @@ const SearchScreen = ({ navigation }) => (
     <StatusBar style="auto" />
   </View>
 );
+
+SearchScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default SearchScreen;
