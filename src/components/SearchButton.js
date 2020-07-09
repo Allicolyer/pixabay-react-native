@@ -1,6 +1,9 @@
 import React from "react";
 import { Text, TouchableOpacity, Keyboard } from "react-native";
-import { updateSearchResults } from "../redux/actions";
+import {
+  updateSearchResults,
+  updatePositionInImageList,
+} from "../redux/actions";
 import { connect } from "react-redux";
 import styles from "../style/appStyles";
 import { paginatedPixabayAPICall } from "../utils/helpers";
@@ -13,6 +16,8 @@ const SearchButton = ({ dispatch }) => (
     onPress={async () => {
       //dismiss the keyboard
       Keyboard.dismiss();
+      //reset the position in the imageList
+      dispatch(updatePositionInImageList(0));
       //dispatch updated search results to redux
       dispatch(
         updateSearchResults(

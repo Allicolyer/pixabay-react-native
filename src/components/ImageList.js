@@ -1,54 +1,79 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { connect } from "react-redux";
 import styles from "../style/appStyles";
-import store from "../redux/store";
 import { calculateImageListColumns } from "../utils/helpers";
-import { TouchableOpacity, FlatList, Image, View, Text } from "react-native";
+import store from "../redux/store";
+import { TouchableOpacity, FlatList, Image } from "react-native";
+import { updatePositionInImageList } from "../redux/actions";
 
 // The ImageList Component displays all images from a user's search
-const ImageList = ({ navigation, results, screenWidth }) => {
-  //if there are results, parse them before they can be rendered in the FlatList component, otherwise set parsed to an empty array
-  const parsed = results ? JSON.parse(results) : [];
-  //calculate the number of columns
+const ImageList = ({ dispatch, navigation, parsed, screenWidth }) => {
+  //figure out where the last position in the list was
+  const indexInImageList = store.getState().indexInImageList;
+  //calculate the number of columns that should be in the flatList
   const numofColumns = calculateImageListColumns(screenWidth, 16);
+  //calculate row height from stylesheet
+  const rowHeight =
+    styles.imageThumbnail.height + 2 * styles.imageThumbnail.margin;
+  //add a ref to the flatlist
+  const flatListRef = useRef(null);
+
+  //scroll to the last visible item whenever the list reloads
+  useEffect(() => {
+    if (flatListRef.current) {
+      let offset = Math.floor(indexInImageList / numofColumns) * rowHeight;
+      flatListRef.current.scrollToOffset({
+        animated: true,
+        offset: offset,
+      });
+    }
+  });
+
+  const onScroll = (e) => {
+    let offset = e.nativeEvent.contentOffset.y;
+    let rowIndex = parseInt(offset / rowHeight);
+    //this finds the index of the image on the first row on the screen -- this will be used to calcuate how much to offset a re-rendered grid by
+    let imageIndex = rowIndex * numofColumns;
+    dispatch(updatePositionInImageList(imageIndex));
+  };
+
+  const getItemLayout = (data, index) => ({
+    length: rowHeight,
+    offset: rowHeight * index,
+    index,
+  });
 
   return (
-    <View style={[styles.flexOne, styles.margin]}>
-      {/* if there are any search results render the Flatlist */}
-      {parsed.length ? (
-        <FlatList
-          //this rerenders the flatList every time there is a change in the screen width
-          key={`id${screenWidth}`}
-          data={parsed}
-          showsVerticalScrollIndicator={false}
-          // the number of columns changes based on the screen orientation
-          numColumns={numofColumns}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                // navigate to the Details route and pass in the image
-                navigation.navigate("Details", {
-                  image: item,
-                });
-              }}
-            >
-              <Image
-                resizeMode="cover"
-                key={`id${item.id}`}
-                source={{ uri: item.previewURL }}
-                style={[styles.roundedBorder, styles.imageThumbnail]}
-              />
-            </TouchableOpacity>
-          )}
-        />
-      ) : (
-        //If there are no search results
-        <Text style={styles.infoText}>
-          {/* If there are no results is null, tell user to enter text to get started, otherwise there are no results */}
-          {results ? "No results found" : "Enter text to get started"}
-        </Text>
+    <FlatList
+      ref={flatListRef}
+      //this rerenders the list every time there is a change in the screen width
+      key={`id${screenWidth}`}
+      onScroll={(e) => onScroll(e)}
+      getItemLayout={getItemLayout}
+      data={parsed}
+      showsVerticalScrollIndicator={false}
+      // the number of columns changes based on the screen orientation
+      numColumns={numofColumns}
+      initialNumToRender={1}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => (
+        <TouchableOpacity
+          onPress={() => {
+            // navigate to the Details route and pass in the image
+            navigation.navigate("Details", {
+              image: item,
+            });
+          }}
+        >
+          <Image
+            resizeMode="cover"
+            source={{ uri: item.previewURL }}
+            style={[styles.roundedBorder, styles.imageThumbnail]}
+          />
+        </TouchableOpacity>
       )}
-    </View>
+    />
   );
 };
 
-export default ImageList;
+export default connect()(ImageList);

@@ -5,7 +5,7 @@ import { TouchableOpacity, View, Text, Image } from "react-native";
 
 //The DetailsScreen displays details about a specific image
 const DetailsScreen = ({ route, navigation, screenDimensions }) => {
-  //image is passed in from ./components/ImageList.js
+  //image is passed in from ./components/SearchResults.js
   const { image } = route.params;
 
   //the containers will either be a row or a column depending on the screenOrientation
