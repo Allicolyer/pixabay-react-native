@@ -1,5 +1,4 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { View, Text } from "react-native";
 import styles from "../style/appStyles";
 import SearchResultsContainer from "../containers/SearchResultsContainer";
@@ -16,7 +15,6 @@ const SearchScreen = ({ navigation }) => (
       <SearchButton />
     </View>
     <SearchResultsContainer navigation={navigation} />
-    <StatusBar style="auto" />
   </View>
 );
 
