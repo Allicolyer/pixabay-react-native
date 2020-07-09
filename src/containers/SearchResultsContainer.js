@@ -4,9 +4,10 @@ import SearchResults from "../components/SearchResults";
 //maps the screen orientation and search results from the redux store to the SearchResults props
 const mapStateToProps = (state) => {
   return {
-    results: state.searchResults
-      ? JSON.stringify(state.searchResults)
-      : state.searchResults,
+    results: state.searchResults.hits
+      ? JSON.stringify(state.searchResults.hits)
+      : state.searchResults.hits,
+    totalHits: state.searchResults.totalHits,
     screenWidth: state.screenDimensions.screenWidth,
   };
 };
