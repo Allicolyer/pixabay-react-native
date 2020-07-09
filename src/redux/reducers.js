@@ -3,6 +3,7 @@ import {
   CHANGE_SEARCH_TEXT_INPUT,
   UPDATE_SEARCH_RESULTS,
   CHANGE_SCREEN_DIMENSIONS,
+  UPDATE_POSITION_IN_IMAGE_LIST,
 } from "./actions";
 import { calculateInitalScreenDimensions } from "../utils/helpers";
 
@@ -16,7 +17,7 @@ const searchResults = (state = null, action) => {
   }
 };
 
-//keeps track of the text inputed by the user in ./components/SearchTextInput
+//keeps track of the text inputed by the user in src/components/SearchTextInput
 const searchTextInput = (state = "", action) => {
   switch (action.type) {
     case CHANGE_SEARCH_TEXT_INPUT:
@@ -26,7 +27,7 @@ const searchTextInput = (state = "", action) => {
   }
 };
 
-//changes to the screen orientation are listened for in ./components/Content
+//changes to the screen orientation are listened for in src/components/Content
 const screenDimensions = (
   state = calculateInitalScreenDimensions(),
   action
@@ -43,8 +44,19 @@ const screenDimensions = (
   }
 };
 
+//keeps track of the position in the image list in src/components/ImageList.js
+const indexInImageList = (state = 0, action) => {
+  switch (action.type) {
+    case UPDATE_POSITION_IN_IMAGE_LIST:
+      return action.index;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   searchResults,
   searchTextInput,
   screenDimensions,
+  indexInImageList,
 });
