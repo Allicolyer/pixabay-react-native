@@ -22,7 +22,7 @@ This app allows users to search for and view details about images on Pixabay.
 
 ### Run the App on an iOS Device
 
-1. Download the Expo app on your iOS device from the [iOS App Store](https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=apps%2fexponent)
+1. Download the Expo app on your iOS device from the [iOS App Store](https://apps.apple.com/us/app/expo-client/id982107779)
 2. Email allicolyer@gmail.com for the username and password to sign in with
 3. Once you are signed in, tap this link and run the app [https://expo.io/@allicolyer101/react-native-101-challenge](https://expo.io/@allicolyer101/react-native-101-challenge)
 
@@ -39,7 +39,7 @@ git clone https://github.com/Allicolyer/pixabay-react-native
 4. Create a [Pixabay API key](https://pixabay.com/api/docs/) and replace the PLACEHOLDER value in `.env.sample.js`
 5. Rename `.env.sample.js` to `.env.js`
 6. Start the app using the Expo client from the root folder `expo start`
-7. Download the Expo app to run on your Android or iOS device. It's available on the [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) and on the [iOS App Store](https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=apps%2fexponent). You can also use an emulator to run the app.
+7. Download the Expo app to run on your Android or iOS device. It's available on the [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) and on the [iOS App Store](https://apps.apple.com/us/app/expo-client/id982107779). You can also use an emulator to run the app.
 
 #### Troubleshooting
 
