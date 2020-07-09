@@ -1,6 +1,5 @@
 import {
   calculateScreenOrientation,
-  calculateImageListColumns,
   calculateImageDisplayDimensions,
 } from "../src/utils/helpers";
 
@@ -35,27 +34,6 @@ test("screen oriention helper function should return landscape", () => {
       screenSizes.landscapeScreen.screenHeight
     )
   ).toBe(screenSizes.landscapeScreen.screenOrientation);
-});
-
-//image list layout columns tests
-test("image list column helper should return 4 columns", () => {
-  const marginInPixels = 16;
-  expect(
-    calculateImageListColumns(
-      screenSizes.portraitScreen.screenWidth,
-      marginInPixels
-    )
-  ).toBe(4);
-});
-
-test("image list column helper should return 8 columns", () => {
-  const marginInPixels = 16;
-  expect(
-    calculateImageListColumns(
-      screenSizes.landscapeScreen.screenWidth,
-      marginInPixels
-    )
-  ).toBe(8);
 });
 
 //image resizing tests

@@ -99,16 +99,6 @@ export const calculateImageDisplayDimensions = (
   return { width: imageWidth, height: imageHeight };
 };
 
-//calculate the number of columns that should be shown in the image list
-export const calculateImageListColumns = (screenWidth, marginInPixels) => {
-  //calcuate imageWidth using stylesheet
-  imageWidth = styles.imageThumbnail.width + styles.imageThumbnail.margin;
-  //get the width of the screen from the redux store, subtrack the width of the side margin
-  const availableWidth = screenWidth - 2 * marginInPixels;
-  //return how many columns can fit
-  return Math.floor(availableWidth / imageWidth);
-};
-
 //calculate the size of the image thumbnail in the imageList
 export const calculateImageThumbnailWidthandHeight = (
   screenWidth,
