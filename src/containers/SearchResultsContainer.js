@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
       : state.searchResults.hits,
     totalHits: state.searchResults.totalHits,
     screenWidth: state.screenDimensions.screenWidth,
+    screenOrientation: state.screenDimensions.screenOrientation,
   };
 };
 

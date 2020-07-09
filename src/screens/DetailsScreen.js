@@ -62,7 +62,7 @@ const DetailsScreen = ({ route, navigation, screenDimensions }) => {
 DetailsScreen.propTypes = {
   route: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
-  screenDimension: PropTypes.shape({
+  screenDimensions: PropTypes.shape({
     screenWidth: PropTypes.number.isRequired,
     screenHeight: PropTypes.number.isRequired,
     screenOrientation: PropTypes.string.isRequired,

@@ -5,7 +5,13 @@ import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 
 // The SearchResults Component displays either an ImageList or text showing no results
-const SearchResults = ({ navigation, results, totalHits, screenWidth }) => {
+const SearchResults = ({
+  navigation,
+  results,
+  totalHits,
+  screenWidth,
+  screenOrientation,
+}) => {
   return (
     <View style={[styles.flexOne, styles.margin]}>
       {/* if there are any hits render the ImageList */}
@@ -15,6 +21,7 @@ const SearchResults = ({ navigation, results, totalHits, screenWidth }) => {
           results={results}
           totalHits={totalHits}
           screenWidth={screenWidth}
+          screenOrientation={screenOrientation}
         />
       ) : (
         <Text style={styles.infoText}>
@@ -31,6 +38,7 @@ SearchResults.propTypes = {
   results: PropTypes.string,
   totalHits: PropTypes.number,
   screenWidth: PropTypes.number.isRequired,
+  screenOrientation: PropTypes.string.isRequired,
 };
 
 export default SearchResults;
