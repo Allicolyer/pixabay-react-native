@@ -69,8 +69,6 @@ const text = {
 //image styles
 const images = {
   imageThumbnail: {
-    width: 85,
-    height: 85,
     margin: theme.space[1],
   },
 };

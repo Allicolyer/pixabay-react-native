@@ -108,3 +108,20 @@ export const calculateImageListColumns = (screenWidth, marginInPixels) => {
   //return how many columns can fit
   return Math.floor(availableWidth / imageWidth);
 };
+
+//calculate the size of the image thumbnail in the imageList
+export const calculateImageThumbnailWidthandHeight = (
+  screenWidth,
+  screenOrientation,
+  marginInPixels
+) => {
+  //get imageMargin from stylesheet
+  const imageMargin = styles.imageThumbnail.margin;
+  //subtract the width of the side margin from the screenWidth
+  const availableWidth = screenWidth - 2 * marginInPixels;
+  //There should be 4 columns in portrait and 8 in landscape
+  numColumns = screenOrientation == "portrait" ? 4 : 8;
+  imageWidth = Math.floor(availableWidth / numColumns);
+  //return the width of the image including margins
+  return imageWidth - 2 * imageMargin;
+};
