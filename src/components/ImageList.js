@@ -5,6 +5,7 @@ import { calculateImageListColumns } from "../utils/helpers";
 import store from "../redux/store";
 import { TouchableOpacity, FlatList, Image, Text } from "react-native";
 import { updatePositionInImageList } from "../redux/actions";
+import PropTypes from "prop-types";
 
 // The ImageList Component displays all images from a user's search
 const ImageList = ({
@@ -92,5 +93,13 @@ const ListHeader = (totalHits) => (
   <Text style={styles.infoText}>Number of Results: {totalHits}</Text>
 );
 const ListFooter = () => <Text style={styles.infoText}>End of Results</Text>;
+
+ImageList.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired,
+  results: PropTypes.string.isRequired,
+  totalHits: PropTypes.number.isRequired,
+  screenWidth: PropTypes.number.isRequired,
+};
 
 export default connect()(ImageList);

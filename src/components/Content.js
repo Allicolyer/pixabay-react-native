@@ -8,6 +8,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions } from "react-native";
 import { theme } from "../style/theme";
+import PropTypes from "prop-types";
 
 //The Content component renders the main logic of the app and listens for changes in screen orientation
 const Content = ({ dispatch }) => {
@@ -52,6 +53,10 @@ const Content = ({ dispatch }) => {
       </Stack.Navigator>
     </NavigationContainer>
   );
+};
+
+Content.propTypes = {
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(Content);
