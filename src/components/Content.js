@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 
 //The Content component renders the main logic of the app and listens for changes in screen orientation
 const Content = ({ dispatch }) => {
-  //window object to get screen orienation
+  //window object to get screen orientation
   const window = Dimensions.get("window");
   //stack object for the navigator
   const Stack = createStackNavigator();

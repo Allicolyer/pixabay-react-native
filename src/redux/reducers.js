@@ -5,7 +5,7 @@ import {
   CHANGE_SCREEN_DIMENSIONS,
   UPDATE_POSITION_IN_IMAGE_LIST,
 } from "./actions";
-import { calculateInitalScreenDimensions } from "../utils/helpers";
+import { calculateInitialScreenDimensions } from "../utils/helpers";
 
 //keeps track of the search results for the user's search input text
 const searchResults = (state = { hits: null, totalHits: null }, action) => {
@@ -17,7 +17,7 @@ const searchResults = (state = { hits: null, totalHits: null }, action) => {
   }
 };
 
-//keeps track of the text inputed by the user in src/components/SearchTextInput
+//keeps track of the text input in src/components/SearchTextInput
 const searchTextInput = (state = "", action) => {
   switch (action.type) {
     case CHANGE_SEARCH_TEXT_INPUT:
@@ -29,7 +29,7 @@ const searchTextInput = (state = "", action) => {
 
 //changes to the screen orientation are listened for in src/components/Content
 const screenDimensions = (
-  state = calculateInitalScreenDimensions(),
+  state = calculateInitialScreenDimensions(),
   action
 ) => {
   switch (action.type) {

@@ -1,6 +1,6 @@
 import {
   calculateScreenOrientation,
-  calculateImageThumbnailWidthandHeight,
+  calculateImageThumbnailWidthAndHeight,
   calculateImageDisplayDimensions,
 } from "../src/utils/helpers";
 
@@ -43,7 +43,7 @@ test("Image thumbnail size test on portrait screen", () => {
   const screenOrientation = screenSizes.portraitScreen.screenOrientation;
   const marginInPixels = 8;
 
-  let imageHeightandWidth = calculateImageThumbnailWidthandHeight(
+  let imageHeightandWidth = calculateImageThumbnailWidthAndHeight(
     screenWidth,
     screenOrientation,
     marginInPixels
@@ -56,7 +56,7 @@ test("Image thumbnail size test on landscape screen", () => {
   const screenOrientation = screenSizes.landscapeScreen.screenOrientation;
   const marginInPixels = 8;
 
-  let imageHeightandWidth = calculateImageThumbnailWidthandHeight(
+  let imageHeightandWidth = calculateImageThumbnailWidthAndHeight(
     screenWidth,
     screenOrientation,
     marginInPixels

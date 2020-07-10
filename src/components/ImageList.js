@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import styles from "../style/appStyles";
-import { calculateImageThumbnailWidthandHeight } from "../utils/helpers";
+import { calculateImageThumbnailWidthAndHeight } from "../utils/helpers";
 import store from "../redux/store";
 import { TouchableOpacity, FlatList, Image, Text } from "react-native";
 import { updatePositionInImageList } from "../redux/actions";
@@ -19,21 +19,21 @@ const ImageList = ({
   //figure out where the last position in the list was
   const indexInImageList = store.getState().indexInImageList;
   //calculate the number of columns that should be in the flatList
-  const numofColumns = screenOrientation == "portrait" ? 4 : 8;
+  const numOfColumns = screenOrientation == "portrait" ? 4 : 8;
   //calculate the image height and width
-  const imageWidthandHeight = calculateImageThumbnailWidthandHeight(
+  const imageWidthAndHeight = calculateImageThumbnailWidthAndHeight(
     screenWidth,
     screenOrientation,
     8
   );
   //for larger screens, like tablets, if the thumbnails are too big, use the webformatURL
   const thumbnailURL =
-    imageWidthandHeight <= 150 ? "previewURL" : "webformatURL";
+    imageWidthAndHeight <= 150 ? "previewURL" : "webformatURL";
 
-  const rowHeight = imageWidthandHeight + 2 * styles.imageThumbnail.margin;
+  const rowHeight = imageWidthAndHeight + 2 * styles.imageThumbnail.margin;
   //header height is used to calculate the offset
   const headerHeight = 20;
-  //add a ref to the flatlist
+  //add a ref to the flatlist component
   const flatListRef = useRef(null);
   //parse the results
   const parsed = JSON.parse(results);
@@ -49,7 +49,7 @@ const ImageList = ({
       //otherwise figure out the offset
       else {
         offset =
-          Math.floor(indexInImageList / numofColumns) * rowHeight +
+          Math.floor(indexInImageList / numOfColumns) * rowHeight +
           headerHeight;
       }
       flatListRef.current.scrollToOffset({
@@ -66,8 +66,8 @@ const ImageList = ({
     if (offset > headerHeight) {
       offset = offset - headerHeight;
       rowIndex = Math.round(offset / rowHeight);
-      //this finds the index of the image on the first row on the screen -- this will be used to calcuate how much to offset a re-rendered grid by
-      imageIndex = rowIndex * numofColumns;
+      //this finds the index of the image on the first row on the screen -- this will be used to calculate how much to offset a re-rendered grid by
+      imageIndex = rowIndex * numOfColumns;
     } else rowIndex = imageIndex = 0;
     dispatch(updatePositionInImageList(imageIndex));
   };
@@ -84,14 +84,14 @@ const ImageList = ({
       //header and footer
       ListHeaderComponent={ListHeader(headerHeight, totalHits)}
       ListFooterComponent={ListFooter}
-      //this rerenders the list every time there is a change in the screen width
+      //this re-renders the list every time there is a change in the screen width
       key={screenOrientation}
       onScroll={(e) => onScroll(e)}
       getItemLayout={getItemLayout}
       data={parsed}
       showsVerticalScrollIndicator={false}
       // the number of columns changes based on the screen orientation
-      numColumns={numofColumns}
+      numColumns={numOfColumns}
       initialNumToRender={1}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
@@ -109,7 +109,7 @@ const ImageList = ({
             style={[
               styles.roundedBorder,
               styles.imageThumbnail,
-              { height: imageWidthandHeight, width: imageWidthandHeight },
+              { height: imageWidthAndHeight, width: imageWidthAndHeight },
             ]}
           />
         </TouchableOpacity>
