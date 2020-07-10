@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { theme } from "./theme";
 
 //styles used throughout app
-const utilites = {
+const utilities = {
   flexColumn: {
     flexDirection: "column",
     alignSelf: "stretch",
@@ -86,7 +86,7 @@ const textInput = {
 };
 
 const styles = StyleSheet.create({
-  ...utilites,
+  ...utilities,
   ...buttons,
   ...text,
   ...images,

@@ -12,7 +12,7 @@ const SearchTextInput = ({ dispatch }) => {
     <TextInput
       onChangeText={(text) => dispatch(changeSearchTextInput(text))}
       placeholder="Example: Trees"
-      // this is the max length for the pixabay API
+      // this is the max length for the Pixabay API
       maxLength={100}
       selectionColor={theme.colors.primary}
       clearButtonMode="while-editing"

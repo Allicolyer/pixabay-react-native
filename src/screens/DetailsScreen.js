@@ -18,7 +18,7 @@ const DetailsScreen = ({ route, navigation, screenDimensions }) => {
     textContainerStyle = { width: 200 };
   }
 
-  //calcuate display image width and height
+  //calculate display image width and height
   let imageDimensions = calculateImageDisplayDimensions(
     screenDimensions,
     image.webformatWidth,

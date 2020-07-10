@@ -2,7 +2,7 @@ import { env } from "../../.env";
 import styles from "../style/appStyles";
 import { Dimensions } from "react-native";
 
-// API call to pixabay
+// API call to Pixabay
 export const paginatedPixabayAPICall = async (text) => {
   if (text.length) {
     // encode the input text from the redux store
@@ -54,7 +54,7 @@ export const calculateScreenOrientation = (width, height) => {
 };
 
 //figure out initial screenDimensions based on the window size
-export const calculateInitalScreenDimensions = () => {
+export const calculateInitialScreenDimensions = () => {
   const window = Dimensions.get("window");
   return {
     screenWidth: window.width,
@@ -100,7 +100,7 @@ export const calculateImageDisplayDimensions = (
 };
 
 //calculate the size of the image thumbnail in the imageList
-export const calculateImageThumbnailWidthandHeight = (
+export const calculateImageThumbnailWidthAndHeight = (
   screenWidth,
   screenOrientation,
   marginInPixels
