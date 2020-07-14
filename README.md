@@ -34,7 +34,7 @@ This app allows users to search for and view details about images on Pixabay.
 git clone https://github.com/Allicolyer/pixabay-react-native
 ```
 
-2. Install the Expo client `npm install -g expo-cli` or `yarn global add expo-cli`
+2. This project requires node version `10.13.0`. If you have nvm installed, you can type `nvm use`. Otherwise, you should make sure you are running `10.13.0`.
 3. Install the latest dependencies using `npm install` or `yarn install`
 4. Create a [Pixabay API key](https://pixabay.com/api/docs/) and replace the PLACEHOLDER value in `.env.sample.js`
 5. Rename `.env.sample.js` to `.env.js`
@@ -45,11 +45,16 @@ git clone https://github.com/Allicolyer/pixabay-react-native
 
 1. If there are problems related to the `.env.js` file, try stopping and restarting Expo
 
+### Running Tests
+
+1. The tests require node version `11.0.0`. Switch to that version before running the tests.
+2. To run the tests type `yarn test` or `npm test`. This will run the jest test suite.
+
 ### Contributors
 
 1. This app was created by Allison Colyer
 2. Big thanks to 101 for posing this challenge
-3. Shoutout to Pixabay for their free API
+3. Shout out to Pixabay for their free API
 
 <table>
   <tr>
